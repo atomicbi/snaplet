@@ -1,5 +1,5 @@
 {
-  "name": "@snaplet/root",
+  "name": "@atomicbi/snaplet",
   "private": true,
   "type": "module",
   "workspaces": [
