@@ -161,7 +161,7 @@
     "terminal-link": "^3.0.0",
     "uuid": "^9.0.1",
     "yargs": "^17.7.2",
-    "zod": "^3.23.5"
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@octokit/rest": "^20.1.0",
@@ -243,5 +243,8 @@
     "test:e2e": "vitest --reporter=tap run e2e",
     "test:debug": "vitest run",
     "test:watch": "vitest"
+  },
+  "resolutions": {
+    "zod": "4.1.5"
   }
 }

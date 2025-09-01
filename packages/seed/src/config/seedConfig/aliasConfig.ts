@@ -5,9 +5,11 @@ type Nested<V> = { [s: string]: Nested<V> | V } | Array<Nested<V> | V> | V;
 type Json = Nested<JsonPrimitive>;
 
 const literalSchema = z.union([z.string(), z.number(), z.boolean(), z.null()]);
-const jsonSchema: z.ZodType<Json> = z.lazy(() =>
-  z.union([literalSchema, z.array(jsonSchema), z.record(jsonSchema)]),
-);
+const jsonSchema: z.ZodType<Json> = z.union([
+  literalSchema,
+  z.lazy(() => z.array(jsonSchema)),
+  z.lazy(() => z.record(z.string(), jsonSchema)),
+]);
 
 const scalarFieldSchema = z.object({
   name: z.string(),
@@ -25,21 +27,27 @@ export const aliasConfigSchema = z.object({
   inflection: z
     .union([
       z.object({
-        modelName: z.function().args(z.string()).returns(z.string()).optional(),
+        modelName: z
+          .function({ input: [z.string()], output: z.string() })
+          .optional(),
         scalarField: z
-          .function()
-          .args(scalarFieldSchema)
-          .returns(z.string())
+          .function({ input: [scalarFieldSchema], output: z.string() })
           .optional(),
         parentField: z
-          .function()
-          .args(objectFieldSchema, oppositeBaseNameMapSchema)
-          .returns(z.string())
+          .function({
+            input: [objectFieldSchema, oppositeBaseNameMapSchema],
+            output: z.string(),
+          })
           .optional(),
         childField: z
-          .function()
-          .args(objectFieldSchema, objectFieldSchema, oppositeBaseNameMapSchema)
-          .returns(z.string())
+          .function({
+            input: [
+              objectFieldSchema,
+              objectFieldSchema,
+              oppositeBaseNameMapSchema,
+            ],
+            output: z.string(),
+          })
           .optional(),
         oppositeBaseNameMap: oppositeBaseNameMapSchema.optional(),
       }),
