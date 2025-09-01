@@ -43,8 +43,8 @@ export const prismaAdapter = {
   name: "Prisma",
   packageName: "@prisma/client",
   template: (parameters = ``) => dedent`
-    import { SeedPrisma } from "@snaplet/seed/adapter-prisma";
-    import { defineConfig } from "@snaplet/seed/config";
+    import { SeedPrisma } from "@atomicbi/snaplet-seed/adapter-prisma";
+    import { defineConfig } from "@atomicbi/snaplet-seed/config";
     import { PrismaClient } from "@prisma/client";
 
     export default defineConfig({

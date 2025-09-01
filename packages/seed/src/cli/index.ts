@@ -11,7 +11,9 @@ import { syncCommand } from "./commands/sync/sync.js";
 import { versionOption } from "./commands/version.js";
 import { debug } from "./lib/debug.js";
 
-const program = yargs(hideBin(process.argv)).scriptName("npx @snaplet/seed");
+const program = yargs(hideBin(process.argv)).scriptName(
+  "npx @atomicbi/snaplet-seed",
+);
 
 configOption(program);
 initCommand(program);

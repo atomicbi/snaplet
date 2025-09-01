@@ -29,7 +29,7 @@ export const FILES = {
     name: "package.json",
     template() {
       return dedent`{
-        "name": "@snaplet/seed/assets",
+        "name": "@atomicbi/snaplet-seed/assets",
         "type": "module",
         "exports": {
           ".": {
@@ -46,12 +46,12 @@ export const FILES = {
   INDEX: {
     name: "index.js",
     template({ dialect, seedConfigPath }: CodegenContext) {
-      // TODO: remove self reference to @snaplet/seed
+      // TODO: remove self reference to @atomicbi/snaplet-seed
       return dedent`
         import { readFileSync } from "node:fs";
         import { dirname, join } from "node:path";
         import { fileURLToPath } from "node:url";
-        import { getSeedClient } from "@snaplet/seed/dialects/${dialect.id}/client";
+        import { getSeedClient } from "@atomicbi/snaplet-seed/dialects/${dialect.id}/client";
         import { userModels } from "./${FILES.USER_MODELS.name}";
 
         const __filename = fileURLToPath(import.meta.url);
@@ -83,7 +83,7 @@ export const FILES = {
         rawDataModel,
       });
       return `
-      declare module "@snaplet/seed/config" {
+      declare module "@atomicbi/snaplet-seed/config" {
         ${configTypes}
       }`;
     },
@@ -110,9 +110,9 @@ export const FILES = {
 
 const findPackageDirPath = async () => {
   // In case of monorepo like turborepo and workspaces, a dependency can be put in a structure like this:
-  // turborepo/ -> packages/ -> ui/ -> package.json <--- Here is the @snaplet/seed dependency
+  // turborepo/ -> packages/ -> ui/ -> package.json <--- Here is the @atomicbi/snaplet-seed dependency
   // But the actual code of the modules will be upward in the hierarchy like this:
-  // turborepo/ -> node_modules -> @snaplet/seed/ -> dist/ -> assets/
+  // turborepo/ -> node_modules -> @atomicbi/snaplet-seed/ -> dist/ -> assets/
   // So we must find the closest node_modules folder
   const closestNodeModulesWithSnapletAssets = await findUp(
     path.join("node_modules", "@snaplet", "seed", "dist", "assets"),
@@ -123,7 +123,7 @@ const findPackageDirPath = async () => {
 
   if (!closestNodeModulesWithSnapletAssets) {
     throw new Error(
-      "@snaplet/seed could not find a node_modules folder for @snaplet/seed in your project. We use this to decide where to generate assets. Either add @snaplet/seed to your project, or use the --output option when using `npx @snaplet/seed generate`",
+      "@atomicbi/snaplet-seed could not find a node_modules folder for @atomicbi/snaplet-seed in your project. We use this to decide where to generate assets. Either add @atomicbi/snaplet-seed to your project, or use the --output option when using `npx @atomicbi/snaplet-seed generate`",
     );
   }
 

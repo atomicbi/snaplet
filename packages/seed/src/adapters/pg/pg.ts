@@ -21,8 +21,8 @@ export const pgAdapter = {
   packageName: "pg",
   typesPackageName: "@types/pg",
   template: (parameters = `/* connection parameters */`) => dedent`
-    import { SeedPg } from "@snaplet/seed/adapter-pg";
-    import { defineConfig } from "@snaplet/seed/config";
+    import { SeedPg } from "@atomicbi/snaplet-seed/adapter-pg";
+    import { defineConfig } from "@atomicbi/snaplet-seed/config";
     import { Client } from "pg";
 
     export default defineConfig({

@@ -7,7 +7,7 @@ export const dedupePreferLast = <Value>(values: Array<Value>): Array<Value> =>
 
 // context(justinvdm, 18 Jan 2024): In some cases, we cannot rely on native instanceof, since the constructor might
 // be an entirely different object. For example:
-// * Our code and libraries (e.g. @snaplet/seed) used inside of jest - jest overrides global objects
+// * Our code and libraries (e.g. @atomicbi/snaplet-seed) used inside of jest - jest overrides global objects
 // * Dual package hazard: (https://nodejs.org/api/packages.html#dual-package-hazard) - this can happen, for e.g, if
 // for some reason two versions of our packages or their dependencies end up in the same runtime for a user
 // * Comparing values created inside of a sandbox (e.g. an evaluated seed.config.ts file) with constructors created
@@ -165,7 +165,7 @@ ${conflicts}
   SEED_CONFIG_NOT_FOUND: (data) => {
     return [
       `Seed config not found at path: ${data.path}`,
-      `run ${bold("npx @snaplet/seed init")} to generate it if you haven't already.`,
+      `run ${bold("npx @atomicbi/snaplet-seed init")} to generate it if you haven't already.`,
     ].join(EOL);
   },
   SEED_DATA_MODEL_NOT_FOUND: (data) => {
@@ -178,13 +178,13 @@ ${conflicts}
     return [
       `.snaplet folder not found at path: ${data.path}`,
       `.snaplet folder must collocate the seed.config.ts file`,
-      `run ${bold("npx @snaplet/seed init")} if you haven't already.`,
+      `run ${bold("npx @atomicbi/snaplet-seed init")} if you haven't already.`,
     ].join(EOL);
   },
   SNAPLET_PROJECT_CONFIG_NOT_FOUND: (data) => {
     return [
       `config.json not found at path: ${data.path}`,
-      `run ${bold("npx @snaplet/seed init")} to generate it if you haven't already.`,
+      `run ${bold("npx @atomicbi/snaplet-seed init")} to generate it if you haven't already.`,
     ].join(EOL);
   },
 };

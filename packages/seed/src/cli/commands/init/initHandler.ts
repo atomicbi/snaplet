@@ -20,16 +20,16 @@ export async function initHandler(args: {
     args.directory,
     "seed.config.ts",
   );
-  // If it's a custom directory, we add the @snaplet/seed config path to the package.json
+  // If it's a custom directory, we add the @atomicbi/snaplet-seed config path to the package.json
   if (args.directory !== ".") {
     await updatePackageJson({
-      "@snaplet/seed": {
+      "@atomicbi/snaplet-seed": {
         config: process.env["SNAPLET_SEED_CONFIG"],
       },
     });
   }
 
-  const welcomeText = `Welcome to ${bold("@snaplet/seed")}! Snaplet Seed populates your database with realistic, production-like mock data ✨`;
+  const welcomeText = `Welcome to ${bold("@atomicbi/snaplet-seed")}! Snaplet Seed populates your database with realistic, production-like mock data ✨`;
 
   console.log();
   console.log(welcomeText);

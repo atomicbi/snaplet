@@ -214,13 +214,13 @@ export const generateUserModels = (context: CodegenContext) => {
       "  ",
     ) ?? "";
 
-  // TODO: remove self reference to @snaplet/seed
+  // TODO: remove self reference to @atomicbi/snaplet-seed
   return dedent`
     import { readFileSync } from "node:fs";
     import { dirname, join } from "node:path";
     import { fileURLToPath } from "node:url";
     import { copycat } from "@snaplet/copycat";
-    import { FallbackSymbol } from "@snaplet/seed/core/symbols";
+    import { FallbackSymbol } from "@atomicbi/snaplet-seed/core/symbols";
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);

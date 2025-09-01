@@ -92,7 +92,7 @@ ${dataModel.models[modelName].fields
    *
    * @example
    * \`\`\`ts seed.client.ts
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    *
    * export default defineConfig({
    *   alias: {
@@ -108,7 +108,7 @@ ${dataModel.models[modelName].fields
    *
    * @example
    * \`\`\`ts seed.client.ts
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    *
    * export default defineConfig({
    *   alias: {
@@ -198,8 +198,8 @@ type TypedConfig = {
    *
    * @example
    * \`\`\`ts seed.config.ts
-   * import { SeedPostgres } from "@snaplet/seed/adapter-postgres";
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { SeedPostgres } from "@atomicbi/snaplet-seed/adapter-postgres";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    * import postgres from "postgres";
    *
    * export default defineConfig({
@@ -212,7 +212,7 @@ type TypedConfig = {
    *
    * To learn more about the available adapters, see the [Adapters](https://docs.snaplet.dev/seed/reference/adapters) reference.
    */
-  adapter: () => import("@snaplet/seed/adapter").DatabaseClient | Promise<import("@snaplet/seed/adapter").DatabaseClient>;
+  adapter: () => import("@atomicbi/snaplet-seed/adapter").DatabaseClient | Promise<import("@atomicbi/snaplet-seed/adapter").DatabaseClient>;
   /**
    * Customize fields and relationships names.
    */
@@ -227,7 +227,7 @@ type TypedConfig = {
    *
    * @example Exclude all tables containing \`access_logs\` and all tables in the \`auth\` schema:
    * \`\`\`ts seed.client.ts
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    *
    * export default defineConfig({
    *   select: ["!*access_logs*", "!auth.*"],
@@ -236,7 +236,7 @@ type TypedConfig = {
    *
    * @example Exclude all tables except the \`public\` schema:
    * \`\`\`ts seed.client.ts
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    *
    * export default defineConfig({
    *   select: ["!*", "public.*"],

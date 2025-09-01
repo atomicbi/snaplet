@@ -46,7 +46,7 @@ Seed uses [Copycat](https://github.com/snaplet/copycat) for its data generation 
 ## Try out Seed
 
 ```bash
-npx @snaplet/seed init
+npx @atomicbi/snaplet-seed init
 ```
 
 Learn more by reading our [documentation](https://snaplet-seed.netlify.app/seed).
@@ -81,7 +81,7 @@ Here is an example of a `dataExamples.json` file:
 ]
 ```
 
-In the above example, one could modify the description and remove the examples. Running `npx @snaplet/seed sync` will then regenerate examples based on the updated description for that column.
+In the above example, one could modify the description and remove the examples. Running `npx @atomicbi/snaplet-seed sync` will then regenerate examples based on the updated description for that column.
 
 ## Documentation
 

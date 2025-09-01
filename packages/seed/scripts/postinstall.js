@@ -54,7 +54,7 @@ function readPackageJSON(pth) {
 }
 
 /**
- * Looks up for a `package.json` which is not `@snaplet/seed` and returns the directory of the package
+ * Looks up for a `package.json` which is not `@atomicbi/snaplet-seed` and returns the directory of the package
  * @param {string | null} startPath - Path to Start At
  * @param {number} limit - Find Up limit
  * @returns {string | null}
@@ -68,7 +68,7 @@ function findPackageRoot(startPath, limit = 10) {
     if (fs.existsSync(pkgPath)) {
       try {
         const pkg = readPackageJSON(pkgPath);
-        if (pkg.name && !["@snaplet/seed"].includes(pkg.name)) {
+        if (pkg.name && !["@atomicbi/snaplet-seed"].includes(pkg.name)) {
           return pkgPath.replace("package.json", "");
         }
       } catch {}
@@ -99,7 +99,7 @@ async function main() {
   try {
     const root = findPackageRoot(process.cwd(), 10);
     if (root && haveValidSeedProject(root)) {
-      await run("npx", ["@snaplet/seed", "generate"], root);
+      await run("npx", ["@atomicbi/snaplet-seed", "generate"], root);
     }
   } catch (e) {
     console.error("An error occurred while running postinstall script", e);

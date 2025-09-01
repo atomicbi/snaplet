@@ -1,4 +1,4 @@
-import { createSeedClient } from "@snaplet/seed";
+import { createSeedClient } from "@atomicbi/snaplet-seed";
 
 const main = async () => {
     const seed = await createSeedClient({});

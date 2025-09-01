@@ -60,8 +60,8 @@ export const adapters: Record<DialectId, Adapter> = {
       const alias = `alias: ${config?.alias ?? `{ inflection: true }`},`;
       const select = config?.select ? `select: ${config.select},` : "";
       return dedent`
-      import { defineConfig } from "@snaplet/seed/config";
-      import { SeedPostgres } from "@snaplet/seed/adapter-postgres";
+      import { defineConfig } from "@atomicbi/snaplet-seed/config";
+      import { SeedPostgres } from "@atomicbi/snaplet-seed/adapter-postgres";
       import postgres from "postgres";
 
       export default defineConfig({
@@ -84,8 +84,8 @@ export const adapters: Record<DialectId, Adapter> = {
       const alias = `alias: ${config?.alias ?? `{ inflection: true }`},`;
       const select = config?.select ? `select: ${config.select},` : "";
       return dedent`
-        import { defineConfig } from "@snaplet/seed/config";
-        import { SeedBetterSqlite3 } from "@snaplet/seed/adapter-better-sqlite3";
+        import { defineConfig } from "@atomicbi/snaplet-seed/config";
+        import { SeedBetterSqlite3 } from "@atomicbi/snaplet-seed/adapter-better-sqlite3";
         import Database from "better-sqlite3";
 
         export default defineConfig({
@@ -107,8 +107,8 @@ export const adapters: Record<DialectId, Adapter> = {
       const alias = `alias: ${config?.alias ?? `{ inflection: true }`},`;
       const select = config?.select ? `select: ${config.select},` : "";
       return dedent`
-        import { defineConfig } from "@snaplet/seed/config";
-        import { SeedMysql2 } from "@snaplet/seed/adapter-mysql2";
+        import { defineConfig } from "@atomicbi/snaplet-seed/config";
+        import { SeedMysql2 } from "@atomicbi/snaplet-seed/adapter-mysql2";
         import { createConnection } from "mysql2/promise";
 
         export default defineConfig({

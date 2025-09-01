@@ -20,8 +20,8 @@ export const mysql2Adapter = {
   name: "mysql2",
   packageName: "mysql2",
   template: (parameters = `/* connection string */`) => dedent`
-    import { SeedMysql2 } from "@snaplet/seed/adapter-mysql2";
-    import { defineConfig } from "@snaplet/seed/config";
+    import { SeedMysql2 } from "@atomicbi/snaplet-seed/adapter-mysql2";
+    import { defineConfig } from "@atomicbi/snaplet-seed/config";
     import { createConnection } from "mysql2/promise";
 
     export default defineConfig({

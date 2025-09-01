@@ -30,8 +30,8 @@ export interface SeedConfig {
    *
    * @example
    * ```ts seed.config.ts
-   * import { SeedPostgres } from "@snaplet/seed/adapter-postgres";
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { SeedPostgres } from "@atomicbi/snaplet-seed/adapter-postgres";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    * import postgres from "postgres";
    *
    * export default defineConfig({
@@ -59,7 +59,7 @@ export interface SeedConfig {
      *
      * @example
      * ```ts seed.client.ts
-     * import { defineConfig } from "@snaplet/seed/config";
+     * import { defineConfig } from "@atomicbi/snaplet-seed/config";
      *
      * export default defineConfig({
      *   alias: {
@@ -75,7 +75,7 @@ export interface SeedConfig {
      *
      * @example
      * ```ts seed.client.ts
-     * import { defineConfig } from "@snaplet/seed/config";
+     * import { defineConfig } from "@atomicbi/snaplet-seed/config";
      *
      * export default defineConfig({
      *   alias: {
@@ -101,7 +101,7 @@ export interface SeedConfig {
    *
    * @example Exclude all tables containing `access_logs` and all tables in the `auth` schema:
    * ```ts seed.client.ts
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    *
    * export default defineConfig({
    *   select: ["!*access_logs*", "!auth.*"],
@@ -110,7 +110,7 @@ export interface SeedConfig {
    *
    * @example Exclude all tables except the public schema:
    * ```ts seed.client.ts
-   * import { defineConfig } from "@snaplet/seed/config";
+   * import { defineConfig } from "@atomicbi/snaplet-seed/config";
    *
    * export default defineConfig({
    *   select: ["!*", "public.*"],
@@ -170,10 +170,11 @@ export async function getSeedConfigPath() {
   }
 
   const packageJson = (await getPackageJson()) as {
-    "@snaplet/seed"?: { config?: string };
+    "@atomicbi/snaplet-seed"?: { config?: string };
   };
-  if (packageJson["@snaplet/seed"]?.config) {
-    process.env["SNAPLET_SEED_CONFIG"] = packageJson["@snaplet/seed"].config;
+  if (packageJson["@atomicbi/snaplet-seed"]?.config) {
+    process.env["SNAPLET_SEED_CONFIG"] =
+      packageJson["@atomicbi/snaplet-seed"].config;
     return resolve(process.env["SNAPLET_SEED_CONFIG"]);
   }
 

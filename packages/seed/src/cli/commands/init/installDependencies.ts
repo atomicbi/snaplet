@@ -13,12 +13,12 @@ export async function installDependencies({ adapter }: { adapter: Adapter }) {
 
   const devDependenciesToInstall = [
     "@snaplet/copycat",
-    `@snaplet/seed@${getVersion()}`,
+    `@atomicbi/snaplet-seed@${getVersion()}`,
     adapter.packageName,
     ...(adapter.typesPackageName ? [adapter.typesPackageName] : []),
   ].filter((d) => {
-    if (d.startsWith("@snaplet/seed")) {
-      return !installedDependencies["@snaplet/seed"];
+    if (d.startsWith("@atomicbi/snaplet-seed")) {
+      return !installedDependencies["@atomicbi/snaplet-seed"];
     }
     return !installedDependencies[d];
   });
