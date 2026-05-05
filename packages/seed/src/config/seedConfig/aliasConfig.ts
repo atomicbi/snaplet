@@ -27,28 +27,16 @@ export const aliasConfigSchema = z.object({
   inflection: z
     .union([
       z.object({
-        modelName: z
-          .function({ input: [z.string()], output: z.string() })
-          .optional(),
-        scalarField: z
-          .function({ input: [scalarFieldSchema], output: z.string() })
-          .optional(),
+        modelName: z.function().args(z.string()).returns(z.string()).optional(),
+        scalarField: z.function().args(scalarFieldSchema).returns(z.string()),
         parentField: z
-          .function({
-            input: [objectFieldSchema, oppositeBaseNameMapSchema],
-            output: z.string(),
-          })
-          .optional(),
+          .function()
+          .args(objectFieldSchema, oppositeBaseNameMapSchema)
+          .returns(z.string()),
         childField: z
-          .function({
-            input: [
-              objectFieldSchema,
-              objectFieldSchema,
-              oppositeBaseNameMapSchema,
-            ],
-            output: z.string(),
-          })
-          .optional(),
+          .function()
+          .args(objectFieldSchema, objectFieldSchema, oppositeBaseNameMapSchema)
+          .returns(z.string()),
         oppositeBaseNameMap: oppositeBaseNameMapSchema.optional(),
       }),
       z.boolean(),
